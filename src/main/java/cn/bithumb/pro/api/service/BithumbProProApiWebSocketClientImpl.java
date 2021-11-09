@@ -77,6 +77,11 @@ public class BithumbProProApiWebSocketClientImpl implements BithumbProApiWebSock
     }
 
     @Override
+    public <T> void onOrder(String topic, ResponseListener<T> responseListener) {
+        listener.addListener(topic, responseListener);
+    }
+
+    @Override
     public void onPrice(String topic, ResponseListener responseListener) {
         listener.addListener(topic, responseListener);
     }

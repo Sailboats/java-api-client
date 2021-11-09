@@ -20,6 +20,8 @@ public interface BithumbProApiWebSocketClient {
 
     <T> void onTrades(String topic, ResponseListener<T> responseListener);
 
+    <T> void onOrder(String topic, ResponseListener<T> responseListener);
+
     void onPrice(String topic, ResponseListener responseListener);
     
     /**

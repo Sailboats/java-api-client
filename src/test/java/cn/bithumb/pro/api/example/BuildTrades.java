@@ -70,9 +70,9 @@ public class BuildTrades {
 
     public static void main(String[] args) {
         BuildTrades buildTrades = new BuildTrades();
-        String symbol = "BTC-USDT";
+        String symbol = "QTUM-USDT";
         buildTrades.buildTrades(symbol);
-        buildTrades.doRestTrades(symbol);
+//        buildTrades.doRestTrades(symbol);
         buildTrades.handData();
     }
 

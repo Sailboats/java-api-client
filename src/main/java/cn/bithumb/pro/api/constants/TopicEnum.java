@@ -5,6 +5,7 @@ public enum TopicEnum {
     TICKER,
     ORDERBOOK,
     TRADE,
+    ORDER,
 
     // normal contract
     CONTRACT_TICKER,

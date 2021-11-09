@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import cn.bithumb.pro.api.model.market.Order;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import cn.bithumb.pro.api.BithumbProApiWebSocketClient;
@@ -77,6 +78,14 @@ public class BithumbProApiListener extends WebSocketListener {
         //订阅ticker
         if (TopicEnum.TICKER.name().equals(topic)) {
             BaseWebSocketResponse<Ticker> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<Ticker>>() {
+            });
+            responseListener.onResponse(response);
+            return;
+        }
+
+        //订阅Order
+        if (TopicEnum.ORDER.name().equals(topic)) {
+            BaseWebSocketResponse<Order> response = JsonUtil.jsonToObj(text, new TypeReference<BaseWebSocketResponse<Order>>() {
             });
             responseListener.onResponse(response);
             return;

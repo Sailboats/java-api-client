@@ -5,27 +5,32 @@ import cn.bithumb.pro.api.BithumbProApiRestClient;
 import cn.bithumb.pro.api.JsonUtil;
 import cn.bithumb.pro.api.constants.OrderSideEnum;
 import cn.bithumb.pro.api.constants.OrderTypeEnum;
+import cn.bithumb.pro.api.model.BaseResponse;
 import cn.bithumb.pro.api.model.NewOrder;
 import cn.bithumb.pro.api.model.OrderQuery;
 import cn.bithumb.pro.api.model.contract.req.ContractOrder;
 
+import java.util.Map;
+
 public class TestInterface {
 
-    private final static String apiKey = "";
-    private final static String secretKey = "";
+    private final static String apiKey = "49ef245abb8614d499b7e09fbcf3a822";
+    private final static String secretKey = "87b88e11a15560ddd8efb282b2760b9206d617497629af4efaf12dab9f3c6baa";
 
     private static void testCreateOrder() {
         BithumbProApiClientFactory factory = BithumbProApiClientFactory.newInstance(apiKey, secretKey);
         BithumbProApiRestClient restClient = factory.newRestClient();
         NewOrder newOrder = new NewOrder();
-        newOrder.setSymbol("ETH-BTC");
+        newOrder.setSymbol("QTUM-USDT");
         newOrder.setType(OrderTypeEnum.limit.name());
-        newOrder.setSide(OrderSideEnum.buy.name());
-        newOrder.setPrice("100");
+        newOrder.setSide(OrderSideEnum.sell.name());
+        newOrder.setPrice("20");
         newOrder.setQuantity("10");
         newOrder.setTimestamp(System.currentTimeMillis());
         newOrder.setMsgNo("test");
-        System.out.println(JsonUtil.objToJson(restClient.createOrder(newOrder)));
+        BaseResponse<Map<String, Object>> order = restClient.createOrder(newOrder);
+        order.getData().get("orderId");
+        System.out.println(JsonUtil.objToJson(order));
     }
 
     private static void testCancelOrder() {
@@ -261,6 +266,7 @@ public class TestInterface {
 //    	
 //    	testTransfer();
 
+        testCreateOrder();
     }
 
 }

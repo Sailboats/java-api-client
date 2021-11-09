@@ -6,6 +6,24 @@ public class Asset {
     private String frozen;
     private String type;
     private String btcQuantity;
+    private String etfFlag;
+    private String leverCoin;
+
+    public String getLeverCoin() {
+        return leverCoin;
+    }
+
+    public void setLeverCoin(String leverCoin) {
+        this.leverCoin = leverCoin;
+    }
+
+    public String getEtfFlag() {
+        return etfFlag;
+    }
+
+    public void setEtfFlag(String etfFlag) {
+        this.etfFlag = etfFlag;
+    }
 
     public String getCoinType() {
         return coinType;
